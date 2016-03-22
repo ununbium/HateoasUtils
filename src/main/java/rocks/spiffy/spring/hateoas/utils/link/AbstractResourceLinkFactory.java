@@ -25,9 +25,7 @@ public abstract class AbstractResourceLinkFactory<R> implements ResourceLinkFact
         try {
             URI uri = new URI(self.getHref());
             optionalUri = Optional.of(uri);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+        } catch (URISyntaxException e) {}
 
         return optionalUri;
     }
