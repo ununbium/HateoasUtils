@@ -1,4 +1,4 @@
-package rocks.spiffy.spring.hateoas.utils.uri;
+package rocks.spiffy.spring.hateoas.utils.uri.resolver;
 
 /**
  * Functional interface that allows the "on" static method to be decoupled from implementation

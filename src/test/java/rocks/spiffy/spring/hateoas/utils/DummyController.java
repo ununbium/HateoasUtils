@@ -15,15 +15,49 @@ public class DummyController {
 
     @RequestMapping(value="/{identifier}", method = RequestMethod.GET)
     public @ResponseBody ResponseEntity findOne(
-            @RequestParam("identifier") String identifier) {
-        return null;
+            @PathVariable("identifier") String identifier) {
+        return ResponseEntity.ok("asd");
     }
 
     @RequestMapping(value="/{identifier}/pet/{petName}", method = RequestMethod.GET)
     public @ResponseBody ResponseEntity findOnesPet(
-            @RequestParam("identifier") String identifier,
-            @RequestParam("petName") String pet) {
-        return null;
+            @PathVariable("identifier") String identifier,
+            @PathVariable("petName") String pet) {
+        return ResponseEntity.ok("asd");
+    }
+
+    @RequestMapping(value="", method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity baseResource(){
+        return ResponseEntity.ok("asd");
+    }
+
+    @RequestMapping(value="/search/byName", method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity searchByName(
+            @RequestParam("name") String name) {
+        return ResponseEntity.ok("asd");
+    }
+
+    @RequestMapping(value="/search/byNameAndOwner", method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity searchByNameAndOwner(
+            @RequestParam(value="name", required = false) String name,
+            @RequestParam(value="owner", required = false) String owner) {
+        return ResponseEntity.ok("asd");
+    }
+
+    @RequestMapping(value="/{userId}/search/byNameAndOwner", method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity searchUserByNameAndOwner(
+            @PathVariable("userId") String userId,
+            @RequestParam(value="name", required = false) String name,
+            @RequestParam(value="owner", required = false) String owner) {
+        return ResponseEntity.ok("asd");
+    }
+
+    @RequestMapping(value="/{userId}/search/byNameAndOwner", method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity searchUserByNameAndOwnerStrict(
+            @PathVariable("userId") String userId,
+            @RequestParam(value="name", required = true) String name,
+            @RequestParam(value="owner", required = true) String owner) {
+        return ResponseEntity.ok("asd");
     }
 
 
