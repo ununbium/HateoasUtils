@@ -74,7 +74,7 @@ public class ControllerBaseUriResolverFactoryTest {
         ControllerUriResolver build = factory.build();
 
         //assert
-        assertThat(build.getUriTemplate().toString(), is("dummy"));
+        assertThat(build.getUriTemplate().toString(), is("dummy/search/byName"));
         List<RequestParam> requestParameters = build.getRequestParameters();
         assertThat(requestParameters.size(), is(1));
         assertThat(requestParameters.get(0).value(), is("name"));
