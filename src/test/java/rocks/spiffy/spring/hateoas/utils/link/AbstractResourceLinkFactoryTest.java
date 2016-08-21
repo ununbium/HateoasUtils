@@ -105,4 +105,54 @@ public class AbstractResourceLinkFactoryTest {
         assertThat(uriForIdentifier.isPresent(), is(true));
         assertThat(uriForIdentifier.get(), is(uri));
     }
+
+    @Test
+    public void testGetLinkForEntity_valid() {
+        //given
+        Object e = mock(Object.class);
+        String identifier = "some identifier";
+
+        ResourceLinkFactory linkFactory = Mockito.mock(AbstractResourceLinkFactory.class);
+        doCallRealMethod().when(linkFactory).getLinkForEntity(e);
+
+        when(linkFactory.getIdentifierForEntity(e)).thenReturn(identifier);
+
+        String urlString = "http://someuri";
+        URI uri = URI.create(urlString);
+        Optional l = Optional.of(uri);
+        when(linkFactory.getUriForIdentifier(identifier)).thenReturn(l);
+
+        //when
+        Optional<Link> linkForEntity = linkFactory.getLinkForEntity(e);
+
+        //then
+        assertThat(linkForEntity.isPresent(), is(true));
+        Link actualLink = linkForEntity.get();
+        assertThat(actualLink.getRel(), is("self"));
+        assertThat(actualLink.getHref(), is(urlString));
+    }
+
+    @Test
+    public void testGetLinkForEntity_invalid() {
+        //given
+        Object e = mock(Object.class);
+        String identifier = "some identifier";
+
+        ResourceLinkFactory linkFactory = Mockito.mock(AbstractResourceLinkFactory.class);
+        doCallRealMethod().when(linkFactory).getLinkForEntity(e);
+
+        when(linkFactory.getIdentifierForEntity(e)).thenReturn(identifier);
+
+        Optional l = Optional.empty();
+        when(linkFactory.getUriForIdentifier(identifier)).thenReturn(l);
+
+        //when
+        Optional<Link> linkForEntity = linkFactory.getLinkForEntity(e);
+
+        //then
+        assertThat(linkForEntity.isPresent(), is(false));
+    }
+
+
+
 }

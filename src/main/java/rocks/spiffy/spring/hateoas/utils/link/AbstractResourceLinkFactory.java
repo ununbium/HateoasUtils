@@ -34,4 +34,19 @@ public abstract class AbstractResourceLinkFactory<R> implements ResourceLinkFact
         String identifier = getIdentifierForEntity(entity);
         return getUriForIdentifier(identifier);
     }
+
+    public Optional<Link> getLinkForEntity(R entity) {
+        String identifier = getIdentifierForEntity(entity);
+        Optional<URI> uriForIdentifier = getUriForIdentifier(identifier);
+        final Optional<Link> optionalLink;
+
+        if(uriForIdentifier.isPresent()) {
+            Link link = new Link(uriForIdentifier.get().toString());
+            optionalLink = Optional.of(link);
+        } else {
+            optionalLink = Optional.empty();
+        }
+
+        return optionalLink;
+    }
 }

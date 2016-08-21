@@ -54,4 +54,12 @@ public interface ResourceLinkFactory<R> {
      * @return an optional URI, present if the entity value was not null, and was valid
      */
     Optional<URI> getUriForEntity(R entity);
+
+    /**
+     * given an entity, return it's Link
+     *
+     * @param entity the entity to the the link from
+     * @return an optional self Link, present if the entity value was not null, and was valid
+     */
+    Optional<Link> getLinkForEntity(R entity);
 }
