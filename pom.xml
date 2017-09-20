@@ -5,8 +5,24 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>rocks.spiffy</groupId>
-    <artifactId>SpringHateoasUtils</artifactId>
+    <artifactId>HateoasUtils</artifactId>
     <version>1.1.0-SNAPSHOT</version>
+
+    <name>Hateoas Utils</name>
+    <description>Some utilities to augment the functionality of the Spring Hateaos project</description>
+    <url>https://github.com/ununbium/HateoasUtils</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/ununbium/HateoasUtils</url>
+    </scm>
 
     <properties>
         <spring-web.version>4.2.3.RELEASE</spring-web.version>
