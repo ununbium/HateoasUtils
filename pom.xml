@@ -9,7 +9,7 @@
     <version>1.1.0-SNAPSHOT</version>
 
     <name>Hateoas Utils</name>
-    <description>Some utilities to augment the functionality of the Spring Hateaos project</description>
+    <description>Some utilities to augment the functionality of the Spring Hateoas project</description>
     <url>https://github.com/ununbium/HateoasUtils</url>
 
     <licenses>
@@ -25,11 +25,11 @@
     </scm>
 
     <properties>
+        <java.version>1.8</java.version>
         <spring-web.version>4.2.3.RELEASE</spring-web.version>
         <spring-hateoas.version>0.19.0.RELEASE</spring-hateoas.version>
         <junit.version>4.12</junit.version>
         <mockito-all.version>1.8.5</mockito-all.version>
-        <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
@@ -83,7 +83,8 @@
 
     <build>
     <plugins>
-      <plugin>
+
+        <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.3</version>
@@ -91,9 +92,65 @@
           <source>${java.version}</source>
           <target>${java.version}</target>
         </configuration>
-      </plugin>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.0.1</version>
+            <executions>
+                <execution>
+                    <id>attach-sources</id>
+                    <goals>
+                        <goal>jar-no-fork</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>2.10.4</version>
+            <executions>
+                <execution>
+                    <id>attach-javadocs</id>
+                    <goals>
+                        <goal>jar</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-gpg-plugin</artifactId>
+            <version>1.6</version>
+            <executions>
+                <execution>
+                    <id>sign-artifacts</id>
+                    <phase>verify</phase>
+                    <goals>
+                        <goal>sign</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+
+        <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <version>1.6.8</version>
+            <extensions>true</extensions>
+            <configuration>
+                <serverId>ossrh</serverId>
+                <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                <autoReleaseAfterClose>false</autoReleaseAfterClose>
+            </configuration>
+        </plugin>
+
     </plugins>
-  </build>
+    </build>
 
 
 </project>
