@@ -3,6 +3,17 @@
 Some utilities to make make life easier when using Spring Hateoas. Specifically around the handling, generation and
 resolution of links.
 
+## Dependency
+Add the following to pom.xml to use this;
+
+```xml
+<dependency>
+  <groupId>rocks.spiffy</groupId>
+  <artifactId>HateoasUtils</artifactId>
+  <version>1.1.0</version>
+</dependency>
+```
+
 ## Link resolution
 Links can be pushed to the server as a way of changing the relationships between resources. 
 Using the following it's possible to easily grab identifiers out of links;
