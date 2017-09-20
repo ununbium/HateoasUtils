@@ -12,6 +12,13 @@
     <description>Some utilities to augment the functionality of the Spring Hateoas project</description>
     <url>https://github.com/ununbium/HateoasUtils</url>
 
+    <developers>
+        <developer>
+            <name>Andrew Hill</name>
+            <email>andy.hill.dev@gmail.com</email>
+        </developer>
+    </developers>
+
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
