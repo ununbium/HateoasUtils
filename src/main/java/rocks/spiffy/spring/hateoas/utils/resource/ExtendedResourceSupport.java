@@ -3,7 +3,6 @@ package rocks.spiffy.spring.hateoas.utils.resource;
 import lombok.Getter;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;

@@ -3,7 +3,6 @@ package rocks.spiffy.spring.hateoas.utils.uri.builder;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.util.UriTemplate;
 import rocks.spiffy.spring.hateoas.utils.uri.resolver.ControllerUriResolver;
 import rocks.spiffy.spring.hateoas.utils.uri.resolver.ControllerUriResolverProvider;
 

@@ -3,10 +3,8 @@ package rocks.spiffy.spring.hateoas.utils.resource;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.hateoas.Link;
-
 import java.util.Map;
 import java.util.Optional;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;

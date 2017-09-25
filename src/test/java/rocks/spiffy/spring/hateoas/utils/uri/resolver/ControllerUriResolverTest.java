@@ -6,11 +6,9 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import rocks.spiffy.spring.hateoas.utils.DummyController;
-import rocks.spiffy.spring.hateoas.utils.uri.resolver.ControllerUriResolver;
 
 import java.util.List;
 import java.util.Map;

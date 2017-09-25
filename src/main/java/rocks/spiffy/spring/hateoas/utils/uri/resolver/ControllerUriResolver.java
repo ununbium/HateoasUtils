@@ -1,11 +1,7 @@
 package rocks.spiffy.spring.hateoas.utils.uri.resolver;
 
 import lombok.Getter;
-import org.springframework.hateoas.core.AnnotationMappingDiscoverer;
-import org.springframework.hateoas.core.MappingDiscoverer;
-
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriTemplate;
 

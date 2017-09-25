@@ -3,7 +3,6 @@ package rocks.spiffy.spring.hateoas.utils.link;
 import org.springframework.hateoas.Link;
 
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Optional;
 
 /**

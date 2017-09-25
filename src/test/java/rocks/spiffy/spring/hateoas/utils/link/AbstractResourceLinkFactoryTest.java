@@ -1,13 +1,10 @@
 package rocks.spiffy.spring.hateoas.utils.link;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.hateoas.Link;
-
 import java.net.URI;
 import java.util.Optional;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;

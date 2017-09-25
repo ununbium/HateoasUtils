@@ -1,7 +1,5 @@
 package rocks.spiffy.spring.hateoas.utils.uri.resolver;
 
-import org.springframework.web.bind.annotation.PathVariable;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;

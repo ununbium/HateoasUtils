@@ -6,20 +6,13 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.hateoas.Link;
-import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import rocks.spiffy.spring.hateoas.utils.DummyController;
-import rocks.spiffy.spring.hateoas.utils.uri.builder.ControllerUriBuilder;
 import rocks.spiffy.spring.hateoas.utils.uri.resolver.ControllerUriResolver;
-
-import java.net.URI;
-
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 /**

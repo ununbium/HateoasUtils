@@ -1,7 +1,6 @@
 package rocks.spiffy.spring.hateoas.utils.uri.resolver;
 
 import lombok.Getter;
-
 import java.lang.reflect.Method;
 
 /**

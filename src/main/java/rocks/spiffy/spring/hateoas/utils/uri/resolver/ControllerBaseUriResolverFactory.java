@@ -26,10 +26,6 @@ public class ControllerBaseUriResolverFactory {
     private static final MappingDiscoverer DISCOVERER = new AnnotationMappingDiscoverer(RequestMapping.class);
     private final MethodInvocation invocation;
 
-    //TODO remove
-//    private static final String openBraceMarker = "rocks.spiffy.OpenBrace";
-//    private static final String closeBraceMarker = "rocks.spiffy.CloseBrace";
-
     public ControllerBaseUriResolverFactory(Object invocationValue) {
         Assert.isInstanceOf(DummyInvocationUtils.LastInvocationAware.class, invocationValue);
         DummyInvocationUtils.LastInvocationAware invocations = (DummyInvocationUtils.LastInvocationAware) invocationValue;
