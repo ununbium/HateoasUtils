@@ -33,6 +33,70 @@ Link petsByOwnerLink = ControllerUriBuilder.linkTo(methodOn(PetController.class)
 assert(petsByOwner.equals("http://example.com/pet/search/petByOwner?ownerName={ownerName}));
 ```
 
+## AbstractResourceLinkFactory
+The AbstractResourceLinkFactory is an opinionated helper service for handling links to Rest resources. By overriding two
+ methods (one converting an entity to a link and the other the reverse operation) the application can then access some 
+ useful utility functions for manipulating links. The two methods to implement are; 
+  
+```java
+//given an identifier, get the link that would point to that resource's root
+public Link getLinkForIdentifier(String identifier);
+```
+and
+```java
+//given an entity, get the identifier for the pet (assumed to be a string)
+public String getIdentifierForEntity(Pet pet);
+```
+
+*AbstractResourceLinkFactory* makes the assumption that the resource is identified by a single string id. 
+This is not ideal - it's perfectly legitimate for an identifier to have two or more components, and not to be a string. 
+Please see improvement #9 (https://github.com/ununbium/HateoasUtils/issues/9) to see the CR for this. 
+
+- getLinkForIdentifier - given a relation and an identifier, make a link for the entity
+- getUriForIdentifier - try to construct a URI from the given identifier
+- getUriForEntity - given an entity instance, try to construct its URI
+- getLinkForEntity - given an entity instance, try to construct its self Link
+
+The AbstractResourceLinkFactory implementation for a specific resource, e.g. PetLinkFactory can then be injected into
+ other services that need to either extract or generate links.
+ 
+For example, assuming there is a domain class Pet, which we expose on the rest API as a PetResource. The **get** for pet should 
+ generate a "self" reference to allow clients to interact with this instance. The ResourceLinkFactory implementation 
+ might look something like the following;
+ 
+```java
+public class PetResourceLinkFactory extends AbstractResourceLinkFactory<Pet> {
+    @Override
+    public Link getLinkForIdentifier(String identifier) {
+        return linkTo(methodOn(PetController.class).findOne(identifier)).withRel("self");
+    }
+
+    @Override
+    public String getIdentifierForEntity(Pet entity) {
+        return entity.getPetNumericIdentifier();
+    }
+}
+```
+ 
+Within the converter *PetToPetResourceConverter* we might expect to see code like the following; 
+ 
+ ```java
+@Autowired
+private PetResourceLinkFactory petResourceLinkFactory;
+
+// ...
+
+public PetResource convert(Pet pet) {
+   PetResource petResource = new PetResource();
+   petResource.setName(pet.getName());
+   
+   //... other conversion activities
+   
+   Link self = petResourceLinkFactory.getLinkForEntity(pet);
+   petResource.addLink(self);
+}
+```
+
 ## Licence
 
 Copyright 2017 Andrew Hill
