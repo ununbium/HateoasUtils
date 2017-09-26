@@ -30,7 +30,7 @@ public interface ResourceLinkFactory<R> {
     String getIdentifierForEntity(R entity);
 
     /**
-     * produces a ControllerLinkBuilder to the given resource
+     * produces a Link to the given resource
      *
      * @param relation the relation name
      * @param identifier the location code to link to
