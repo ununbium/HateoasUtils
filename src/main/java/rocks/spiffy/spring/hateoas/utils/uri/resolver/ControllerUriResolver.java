@@ -1,6 +1,5 @@
 package rocks.spiffy.spring.hateoas.utils.uri.resolver;
 
-import lombok.Getter;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriTemplate;
@@ -14,7 +13,6 @@ import java.util.Optional;
  *
  * @author Andrew Hill
  */
-@Getter
 public class ControllerUriResolver {
     private final UriTemplate uriTemplate;
     private final List<RequestParam> requestParameters;
@@ -74,5 +72,21 @@ public class ControllerUriResolver {
     public static ControllerUriResolver on(Object invocationValue) {
         ControllerBaseUriResolverFactory factory = new ControllerBaseUriResolverFactory(invocationValue);
         return factory.build();
+    }
+
+    public UriTemplate getUriTemplate() {
+        return this.uriTemplate;
+    }
+
+    public List<RequestParam> getRequestParameters() {
+        return this.requestParameters;
+    }
+
+    public List<PathVariable> getPathVariables() {
+        return this.pathVariables;
+    }
+
+    public MethodInvocation getInvocation() {
+        return this.invocation;
     }
 }

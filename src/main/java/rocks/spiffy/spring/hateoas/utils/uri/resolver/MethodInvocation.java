@@ -1,12 +1,10 @@
 package rocks.spiffy.spring.hateoas.utils.uri.resolver;
 
-import lombok.Getter;
 import java.lang.reflect.Method;
 
 /**
  * @author Andrew Hill
  */
-@Getter
 public class MethodInvocation {
 
     private final Class<?> targetClass;
@@ -17,5 +15,17 @@ public class MethodInvocation {
         this.targetClass = targetClass;
         this.targetMethod = targetMethod;
         this.parameters = parameters;
+    }
+
+    public Class<?> getTargetClass() {
+        return this.targetClass;
+    }
+
+    public Method getTargetMethod() {
+        return this.targetMethod;
+    }
+
+    public Object[] getParameters() {
+        return this.parameters;
     }
 }

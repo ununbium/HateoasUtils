@@ -1,8 +1,8 @@
 package rocks.spiffy.spring.hateoas.utils.resource;
 
-import lombok.Getter;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.ResourceSupport;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -13,7 +13,6 @@ import java.util.Optional;
  * @author Andrew Hill
  */
 public class ExtendedResourceSupport extends ResourceSupport {
-    @Getter
     Map<String, Object> _embedded = new HashMap<>();
 
     /**
@@ -38,5 +37,9 @@ public class ExtendedResourceSupport extends ResourceSupport {
 
     public void addEmbedded(String name, Object embeddedValue) {
         _embedded.put(name, embeddedValue);
+    }
+
+    public Map<String, Object> get_embedded() {
+        return this._embedded;
     }
 }
