@@ -3,6 +3,8 @@ package rocks.spiffy.spring.hateoas.utils.link;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.hateoas.Link;
+import org.springframework.hateoas.LinkRelation;
+
 import java.net.URI;
 import java.util.Optional;
 import static org.hamcrest.core.Is.is;
@@ -125,7 +127,7 @@ public class AbstractResourceLinkFactoryTest {
         //then
         assertThat(linkForEntity.isPresent(), is(true));
         Link actualLink = linkForEntity.get();
-        assertThat(actualLink.getRel(), is("self"));
+        assertThat(actualLink.getRel(), is(LinkRelation.of("self")));
         assertThat(actualLink.getHref(), is(urlString));
     }
 

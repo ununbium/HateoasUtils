@@ -13,7 +13,7 @@ import rocks.spiffy.spring.hateoas.utils.DummyController;
 import rocks.spiffy.spring.hateoas.utils.uri.resolver.ControllerUriResolver;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 /**
  * @author Andrew Hill

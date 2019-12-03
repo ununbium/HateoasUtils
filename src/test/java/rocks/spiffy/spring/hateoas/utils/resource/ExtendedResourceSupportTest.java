@@ -3,6 +3,8 @@ package rocks.spiffy.spring.hateoas.utils.resource;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.hateoas.Link;
+import org.springframework.hateoas.LinkRelation;
+
 import java.util.Map;
 import java.util.Optional;
 import static org.hamcrest.core.Is.is;
@@ -19,12 +21,11 @@ public class ExtendedResourceSupportTest {
     @Test
     public void testNullableLinkPresent() {
         //given
-        ExtendedResourceSupport e = new ExtendedResourceSupport();
-        Link link = mock(Link.class);
-        when(link.getRel()).thenReturn("spam");
+        ExtendedRepresentationModel e = new ExtendedRepresentationModel();
         String mockUri = "http://spam.spam:9090";
-        when(link.getHref()).thenReturn(mockUri);
 
+        Link link = new Link(mockUri, "spam");
+        
         e.add(link);
 
         //when
@@ -38,9 +39,9 @@ public class ExtendedResourceSupportTest {
     @Test
     public void testNullableLinkNotPresent() {
         //given
-        ExtendedResourceSupport e = new ExtendedResourceSupport();
+        ExtendedRepresentationModel e = new ExtendedRepresentationModel();
         Link link = mock(Link.class);
-        when(link.getRel()).thenReturn("spam");
+        when(link.getRel()).thenReturn(LinkRelation.of("spam"));
         String mockUri = "http://spam.spam:9090";
         when(link.getHref()).thenReturn(mockUri);
 
@@ -56,7 +57,7 @@ public class ExtendedResourceSupportTest {
     @Test
     public void test_EmbeddedIsInitialisedEmpty() {
         //given
-        ExtendedResourceSupport e = new ExtendedResourceSupport();
+        ExtendedRepresentationModel e = new ExtendedRepresentationModel();
 
         //when
         Map<String, Object> embedded = e.get_embedded();
@@ -68,7 +69,7 @@ public class ExtendedResourceSupportTest {
     @Test
     public void test_EmbeddedIsAdded() {
         //given
-        ExtendedResourceSupport e = new ExtendedResourceSupport();
+        ExtendedRepresentationModel e = new ExtendedRepresentationModel();
         String embeddedKey = "testEntry";
         Object embeddedValue = mock(Object.class);
         e.addEmbedded(embeddedKey, embeddedValue);
@@ -85,7 +86,7 @@ public class ExtendedResourceSupportTest {
     @Test
     public void test_EmbeddedIsReplaced() {
         //given
-        ExtendedResourceSupport e = new ExtendedResourceSupport();
+        ExtendedRepresentationModel e = new ExtendedRepresentationModel();
         String embeddedKey = "testEntry";
         Object embeddedValue = mock(Object.class);
         Object embeddedValueReplacement = mock(Object.class);

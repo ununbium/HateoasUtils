@@ -1,7 +1,7 @@
 package rocks.spiffy.spring.hateoas.utils.uri.builder;
 
 import org.springframework.hateoas.Link;
-import org.springframework.hateoas.mvc.ControllerLinkBuilder;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.web.bind.annotation.RequestParam;
 import rocks.spiffy.spring.hateoas.utils.uri.resolver.ControllerUriResolver;
 import rocks.spiffy.spring.hateoas.utils.uri.resolver.ControllerUriResolverProvider;
@@ -35,7 +35,7 @@ public class ControllerUriBuilder {
         Method targetMethod = resolver.getInvocation().getTargetMethod();
         Object[] parameters = resolver.getInvocation().getParameters();
 
-        String uriTemplateString = ControllerLinkBuilder.linkTo(targetClass, targetMethod, parameters).toUri().toString();
+        String uriTemplateString = WebMvcLinkBuilder.linkTo(targetClass, targetMethod, parameters).toUri().toString();
 
         Iterator<RequestParam> requestParamIterator = parameterAnnotations.iterator();
 
