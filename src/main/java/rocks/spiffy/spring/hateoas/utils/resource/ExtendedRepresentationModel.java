@@ -20,7 +20,10 @@ public class ExtendedRepresentationModel extends RepresentationModel<ExtendedRep
      *
      * @param linkName the name of the link to try to get the href of
      * @return Optionally a href string, if present
+     *
+     * @deprecated this is somewhat obsolete since the change to Spring-Hateoas getLink() returning optional links
      */
+    @Deprecated
     public Optional<String> ofNullableLink(String linkName) {
         return getLink(linkName).map(Link::getHref);
     }
