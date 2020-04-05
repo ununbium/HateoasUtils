@@ -1,6 +1,7 @@
 package rocks.spiffy.spring.hateoas.utils.uri.resolver;
 
 import org.springframework.hateoas.server.core.AnnotationMappingDiscoverer;
+import org.springframework.hateoas.server.core.DummyInvocationUtils;
 import org.springframework.hateoas.server.core.LastInvocationAware;
 import org.springframework.hateoas.server.core.MappingDiscoverer;
 import org.springframework.util.Assert;
@@ -28,7 +29,7 @@ public class ControllerBaseUriResolverFactory {
 
     public ControllerBaseUriResolverFactory(Object invocationValue) {
         Assert.isInstanceOf(LastInvocationAware.class, invocationValue);
-        LastInvocationAware invocations = (LastInvocationAware) invocationValue;
+        LastInvocationAware invocations = DummyInvocationUtils.getLastInvocationAware(invocationValue);
         org.springframework.hateoas.server.core.MethodInvocation  invocation = invocations.getLastInvocation();
 
         Class<?> targetClass = invocation.getTargetType();
