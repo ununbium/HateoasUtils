@@ -33,8 +33,8 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-web.version>5.2.1.RELEASE</spring-web.version>
-        <spring-hateoas.version>1.0.1.RELEASE</spring-hateoas.version>
+        <spring-web.version>5.2.5.RELEASE</spring-web.version>
+        <spring-hateoas.version>1.0.4.RELEASE</spring-hateoas.version>
         <junit.version>4.12</junit.version>
         <mockito-all.version>1.8.5</mockito-all.version>
     </properties>
