@@ -10,7 +10,7 @@ Add the following to pom.xml to use this;
 <dependency>
   <groupId>rocks.spiffy</groupId>
   <artifactId>HateoasUtils</artifactId>
-  <version>2.0.0</version>
+  <version>3.1.0</version>
 </dependency>
 ```
 
