@@ -4,7 +4,7 @@
 
     <groupId>rocks.spiffy</groupId>
     <artifactId>HateoasUtils</artifactId>
-    <version>3.0.1-SNAPSHOT</version>
+    <version>3.1.0</version>
 
     <name>Hateoas Utils</name>
     <description>Some utilities to augment the functionality of the Spring Hateoas project</description>
@@ -28,7 +28,7 @@
     <scm>
         <url>https://github.com/ununbium/HateoasUtils</url>
         <connection>scm:git:https://github.com/ununbium/HateoasUtils</connection>
-      <tag>HEAD</tag>
+      <tag>3.1.0</tag>
   </scm>
 
     <properties>
