@@ -2,6 +2,7 @@ package rocks.spiffy.spring.hateoas.utils.uri.resolver;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.util.UriTemplate;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class ControllerUriResolver {
      * @return Resolve the map of template variables
      */
     public Map<String, String> resolve(String uri) {
-        return uriTemplate.match(uri);
+        return uriTemplate.match(stripQueryAndFragment(uri));
     }
 
     /**
@@ -50,17 +51,15 @@ public class ControllerUriResolver {
      * @return optionally the named uri parameter value if found
      */
     public Optional<String> resolve(String uri, String parameterToResolve) {
-        Map<String, String> match = uriTemplate.match(uri);
+        return Optional.ofNullable(resolve(uri).get(parameterToResolve));
+    }
 
-        final Optional<String> matchFound;
-
-        if (match.containsKey(parameterToResolve)) {
-            matchFound = Optional.of(match.get(parameterToResolve));
-        } else {
-            matchFound = Optional.empty();
-        }
-
-        return matchFound;
+    private static String stripQueryAndFragment(String uri) {
+        return UriComponentsBuilder.fromUriString(uri)
+                .replaceQuery(null)
+                .fragment(null)
+                .build()
+                .toUriString();
     }
 
     /**

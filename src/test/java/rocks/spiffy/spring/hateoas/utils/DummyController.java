@@ -26,6 +26,13 @@ public class DummyController {
         return ResponseEntity.ok("asd");
     }
 
+    @RequestMapping(value="/download/{id}", method = RequestMethod.GET)
+    public @ResponseBody ResponseEntity download(
+            @PathVariable("id") String id,
+            @RequestParam("token") String token) {
+        return ResponseEntity.ok("asd");
+    }
+
     @RequestMapping(value="", method = RequestMethod.GET)
     public @ResponseBody ResponseEntity baseResource(){
         return ResponseEntity.ok("asd");
