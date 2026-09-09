@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -161,5 +162,18 @@ public class ControllerUriResolverTest
         assertThat(pathVariables.get(1).value(), is("petName"));
     }
 
+    @Test
+    public void testSingleParameterWithEncodedValueFound() {
+        //given
+        String uri = WebMvcLinkBuilder.linkTo(methodOn(DummyController.class).findOne("hello:world")).toUri().toString();
+
+        //when
+        Map<String, String> params = ControllerUriResolver.on(
+                methodOn(DummyController.class).findOne(null)).resolve(uri);
+
+        //then
+        assertThat(params.size(), is(1));
+        assertThat(params.get("identifier"), is("hello:world"));
+    }
 
 }

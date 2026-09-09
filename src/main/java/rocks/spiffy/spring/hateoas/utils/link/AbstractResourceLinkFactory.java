@@ -40,7 +40,7 @@ public abstract class AbstractResourceLinkFactory<R> implements ResourceLinkFact
         final Optional<Link> optionalLink;
 
         if(uriForIdentifier.isPresent()) {
-            Link link = new Link(uriForIdentifier.get().toString());
+            Link link = Link.of(uriForIdentifier.get().toString());
             optionalLink = Optional.of(link);
         } else {
             optionalLink = Optional.empty();

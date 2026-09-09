@@ -5,9 +5,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.util.UriTemplate;
 
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import org.springframework.web.util.UriUtils;
 
 /**
  * Provides an easy way of getting request parameters out of a uri
@@ -40,7 +43,7 @@ public class ControllerUriResolver {
      * @return Resolve the map of template variables
      */
     public Map<String, String> resolve(String uri) {
-        return uriTemplate.match(stripQueryAndFragment(uri));
+        return match(stripQueryAndFragment(uri));
     }
 
     /**
@@ -87,5 +90,12 @@ public class ControllerUriResolver {
 
     public MethodInvocation getInvocation() {
         return invocation;
+    }
+
+    private Map<String, String> match(String uri) {
+        Map<String, String> match = new HashMap<>();
+        uriTemplate.match(uri)
+                .forEach((key, value) -> match.put(key, UriUtils.decode(value, StandardCharsets.UTF_8)));
+        return match;
     }
 }

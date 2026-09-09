@@ -1,17 +1,17 @@
 package rocks.spiffy.spring.hateoas.utils.resource;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.LinkRelation;
-
-import java.util.Map;
-import java.util.Optional;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
+import java.util.Map;
+import java.util.Optional;
+import org.junit.Assert;
+import org.junit.Test;
+import org.springframework.hateoas.Link;
+import org.springframework.hateoas.LinkRelation;
 
 /**
  * @author Andrew Hill
@@ -24,7 +24,7 @@ public class ExtendedResourceSupportTest {
         ExtendedRepresentationModel e = new ExtendedRepresentationModel();
         String mockUri = "http://spam.spam:9090";
 
-        Link link = new Link(mockUri, "spam");
+        Link link = Link.of(mockUri, "spam");
         
         e.add(link);
 
