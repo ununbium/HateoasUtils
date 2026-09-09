@@ -104,6 +104,34 @@ public class ControllerUriResolverTest
     }
 
     @Test
+    public void testPathVariableFollowedByQueryParamDirect() {
+        //given
+        ControllerUriResolver on = ControllerUriResolver.on(
+                methodOn(DummyController.class).download(null, null));
+
+        //when
+        Optional<String> id = on.resolve("http://localhost/dummy/download/5?token=xyz", "id");
+
+        //then
+        assertTrue(id.isPresent());
+        assertThat(id.get(), is("5"));
+    }
+
+    @Test
+    public void testPathVariableFollowedByQueryParam() {
+        //given
+        ControllerUriResolver on = ControllerUriResolver.on(
+                methodOn(DummyController.class).download(null, null));
+
+        //when
+        Map<String, String> params = on.resolve("http://localhost/dummy/download/5?token=xyz");
+
+        //then
+        assertThat(params.size(), is(1));
+        assertThat(params.get("id"), is("5"));
+    }
+
+    @Test
     public void testMultipleParametersFound() {
         //given
         ControllerUriResolver on = ControllerUriResolver.on(
