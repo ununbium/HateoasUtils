@@ -36,7 +36,7 @@
         <java.version>17</java.version>
         <spring-web.version>6.2.19</spring-web.version>
         <spring-hateoas.version>2.5.3</spring-hateoas.version>
-        <junit.version>4.13.1</junit.version>
+        <junit.version>4.13.2</junit.version>
         <mockito-all.version>5.23.0</mockito-all.version>
     </properties>
 
