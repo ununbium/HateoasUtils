@@ -48,7 +48,7 @@ public class ControllerBaseUriResolverFactory {
      */
     public ControllerUriResolver build() {
 
-        UriTemplate uriTemplate = new UriTemplate(DISCOVERER.getMapping(invocation.getTargetClass(), invocation.getTargetMethod()));
+        UriTemplate uriTemplate = new UriTemplate(DISCOVERER.getUriMapping(invocation.getTargetClass(), invocation.getTargetMethod()).getMapping());
 
         return new ControllerUriResolver(uriTemplate, pathVariables, requestParams, invocation);
     }
